@@ -1,0 +1,50 @@
+body {
+	position: relative;
+	max-width: 800px;
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 10px;
+	font-family: 'Roboto', sans-serif;
+	border: 2px solid black;
+	border-radius: 10px
+}
+
+.masthead {
+	font-size: 50px;
+	margin: 10px;
+}
+
+.add-contact {
+	margin: 10px;
+	margin-top: 20px;
+	font-size: 25px;
+}
+
+.form {
+	margin: 10px;
+	margin-top: 30px;
+	font-size: 20px;
+	line-height: 5px;
+}
+
+.first-name, .last-name, .phone,
+.add1, .add2, .county {
+	width: 45%;
+	height: 20px;
+	border: 1px solid black;
+	border-radius: 4px;
+}
+
+.add {
+	margin: 10px;
+	font-size: 20px;
+	background-color: #FFFFFF;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.contact-list {
+	margin: 10px;
+}
+
