@@ -50,9 +50,19 @@ body {
 
 .contact-record {
 	list-style-type: none;
+	text-transform: capitalize;
 }
 
 .contact-list {
 	margin: 10px;
+}
+
+.clist {
+	list-style-type: none;
+	text-transform: capitalize;
+}
+
+.clist:hover {
+	cursor: pointer;
 }
 
