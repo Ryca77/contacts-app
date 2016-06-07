@@ -39,9 +39,17 @@ body {
 .add {
 	margin: 10px;
 	font-size: 20px;
-	background-color: #FFFFFF;
+	background-color: #32C1FF;
 	border: 1px solid black;
 	border-radius: 5px;
+}
+
+.add:hover {
+	background-color: #3228FF;
+}
+
+.contact-record {
+	list-style-type: none;
 }
 
 .contact-list {
