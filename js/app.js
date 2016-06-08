@@ -1,7 +1,68 @@
 $(document).ready(function(){
 
-//create contact object//
+//create contacts object and functions//
+var contactData = {
+	contacts: [],
+	contactRecord: function() {
+		var newContact = {
+		FirstName: $('.first-name').val(),
+		LastName: $('.last-name').val(),
+		Phone: $('.phone').val(),
+		Address1: $('.add1').val(),
+		Address2: $('.add2').val(),
+		County:$ ('.county').val()
+		};
+	contactData.contacts.push(newContact);
+	contactData.contactList();
+
+	},
+	showContact: function() {
+		var id = $(this).attr('id');
+		$('.contact-record').html(contactData.contacts[id].FirstName + " " + contactData.contacts[id].LastName +
+			"<br>" + "First Name: " + contactData.contacts[id].FirstName + "<br>" + "Last Name: " + contactData.contacts[id].LastName +
+			  "<br>" + "Phone: " + " " + contactData.contacts[id].Phone + "<br>" + "Address: " + " " + contactData.contacts[id].Address1 + ", " +
+			   contactData.contacts[id].Address2 + ", " + contactData.contacts[id].County);
+	},
+	contactList: function() {
+		$('.clist').html("");
+		for (var i = 0; i < contactData.contacts.length; i++) {
+			$('.clist').append('<li id=' + i + '>' + contactData.contacts[i].FirstName + " " + contactData.contacts[i].LastName + '</li');
+		}
+	}
+}
+
+$('.add').click(contactData.contactRecord);
+$('body').on('click', '.clist li', contactData.showContact);
+
+//fix this... ensure mandatory fields are filled//
 $('.add').on('click', function() {
+	if (contactData.contacts.FirstName === "") {
+		alert("you must complete all fields")
+	}
+})
+
+//empty input fields//
+$('.add').on('click', function() {	
+	$('.first-name').val('');
+	$('.last-name').val('');
+	$('.phone').val('');
+	$('.add1').val('');
+	$('.add2').val('');
+	$('.county').val('');
+});
+
+});
+
+//add local storage//
+/*localStorage.setItem('contacts', contactList.contacts);
+var contacts = localStorage.getItem('contacts');*/
+
+//change loop to this for local storage retrieval//
+/*for (var i = 0; i < contact.length; i++) {
+      $('#list').append('<li id=' + i + '>' + contact[i].name_first + '</li>');*/
+
+//next 50 lines = initial attempt//
+/*$('.add').on('click', function() {
 	var contactObj = {
 		'FirstName':
 		$('[class=first-name]').val(),
@@ -21,11 +82,6 @@ $('.add').on('click', function() {
 	console.log(contactObj);
 	console.log('record');
 
-	//create//
-	var uniqueId = contactObj.UniqueID;
-	uniqueId+=1
-	console.log(uniqueId)
-
 	//empty input fields//
 	$('.first-name').val('');
 	$('.last-name').val('');
@@ -33,15 +89,6 @@ $('.add').on('click', function() {
 	$('.add1').val('');
 	$('.add2').val('');
 	$('.county').val('');
-
-/*//create unique ids for contact records and assign to each form submit//
-function newId() {
-	var uniqueId = contactObj.UniqueID;
-
-	uniqueId++
-	console.log(uniqueId)
-}
-newId();*/
 
 //create contact record and contact list from object//
 var fName = contactObj.FirstName;
@@ -58,25 +105,13 @@ var cList = fName + " " + lName;
 $('.contact-record').html(contactRecord);
 $('.clist').append(cList + "<br>");
 
-
-
-
 //store contact record//
 localStorage.setItem('.contact-record', contactRecord);
 var retrieveRecord = localStorage.getItem('.contact-record');
 
 $('.clist').on('click', function() {
 console.log(retrieveRecord);
-})
-
-//fix... clicking on contacts list console logs both contacts entered//
-//make clicked contact = that specific record//
-//write code which displays contact clicked into contact record//
-
-});
-
-});
-
+})*/
 
 
 /*var fName = $('.first-name').val();
