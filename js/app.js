@@ -15,9 +15,16 @@ $('.add').on('click', function() {
 		$('[class=add2]').val(),
 		'County':
 		$('[class=county]').val(),
+		'UniqueID':
+		$('[class=unique-id]').val(),
 	}
 	console.log(contactObj);
 	console.log('record');
+
+	//create//
+	var uniqueId = contactObj.UniqueID;
+	uniqueId+=1
+	console.log(uniqueId)
 
 	//empty input fields//
 	$('.first-name').val('');
@@ -26,6 +33,15 @@ $('.add').on('click', function() {
 	$('.add1').val('');
 	$('.add2').val('');
 	$('.county').val('');
+
+/*//create unique ids for contact records and assign to each form submit//
+function newId() {
+	var uniqueId = contactObj.UniqueID;
+
+	uniqueId++
+	console.log(uniqueId)
+}
+newId();*/
 
 //create contact record and contact list from object//
 var fName = contactObj.FirstName;
@@ -42,14 +58,19 @@ var cList = fName + " " + lName;
 $('.contact-record').html(contactRecord);
 $('.clist').append(cList + "<br>");
 
+
+
+
 //store contact record//
 localStorage.setItem('.contact-record', contactRecord);
 var retrieveRecord = localStorage.getItem('.contact-record');
+
 $('.clist').on('click', function() {
 console.log(retrieveRecord);
 })
 
 //fix... clicking on contacts list console logs both contacts entered//
+//make clicked contact = that specific record//
 //write code which displays contact clicked into contact record//
 
 });
