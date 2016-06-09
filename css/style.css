@@ -55,9 +55,19 @@ body {
 	background-color: #32C1FF;
 	border: 1px solid black;
 	border-radius: 5px;
+	display: none;
 }
 
-.add:hover, .add-phone:hover {
+.go {
+	font-size: 15px;
+	background-color: #32C1FF;
+	border: 1px solid black;
+	border-radius: 5px;
+	line-height: 20px;
+	display: none;
+}
+
+.add:hover, .add-phone:hover, .go:hover {
 	background-color: #3228FF;
 }
 
