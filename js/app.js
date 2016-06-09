@@ -13,7 +13,10 @@ var contactData = {
 		County:$ ('.county').val()
 		};
 	contactData.contacts.push(newContact);
-	contactData.contactList();
+	if contactData.validateForm() {
+		contactData.contactList();
+		}
+		
 	},
 	showContact: function() {
 		var id = $(this).attr('id');
@@ -28,6 +31,13 @@ var contactData = {
 		$('.clist').html("");
 		for (var i = 0; i < contactData.contacts.length; i++) {
 			$('.clist').append('<li id=' + i + '>' + contactData.contacts[i].FirstName + " " + contactData.contacts[i].LastName + '</li');
+		//make first name and phone fields mandatory//
+		/*var fName = $('.first-name').val()
+		var phone = $('.phone').val()
+		if (fName == "" || fName == null) {
+			alert('Please enter a first name.');
+			return false;
+			}*/
 		}
 	},
 	updateRecord: function () {
@@ -38,20 +48,22 @@ var contactData = {
 	console.log(updatedContact);
 	},
 	showUpdatedContact: function() {
-		var updatedDetail = $('.contact-detail').html("Phone 2: " + " " + contactData.contacts.Phone2);
+		var updatedDetail = $('.contact-detail').html("Phone 2: " + " " + updatedContact.Phone2);
 		$(updatedDetail).css('font-size', '15px');
 	},
-	//fix this... ensure mandatory fields are filled//
 	validateForm: function() {
-		var fname = $('.first-name').val(contactData.contacts.FirstName)
-		var x = (name).value;
-		if (x == null || x == "") {
-			console.log('enter name');
-			return false;
+	var fName = $('.first-name').val();
+	if (fName == "" || fName == null) {
+		alert('Please enter a first name.');
+		return false;
+		}
+	else {
+		return true;
 		}
 	}
-}
-$('.add').click(contactData.validateForm);
+};
+
+/*$('.add').click(contactData.validateForm);*/
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 $('body').on('click', '.clist li', function() {
