@@ -7,7 +7,7 @@ var contactData = {
 		var newContact = {
 		FirstName: $('.first-name').val(),
 		LastName: $('.last-name').val(),
-		Phone: $('.phone').val(),
+		Phone: $('.phone1').val(),
 		Address1: $('.add1').val(),
 		Address2: $('.add2').val(),
 		County:$ ('.county').val()
@@ -18,38 +18,50 @@ var contactData = {
 	},
 	showContact: function() {
 		var id = $(this).attr('id');
-		$('.contact-record').html(contactData.contacts[id].FirstName + " " + contactData.contacts[id].LastName +
-			"<br>" + "First Name: " + contactData.contacts[id].FirstName + "<br>" + "Last Name: " + contactData.contacts[id].LastName +
-			  "<br>" + "Phone: " + " " + contactData.contacts[id].Phone + "<br>" + "Address: " + " " + contactData.contacts[id].Address1 + ", " +
-			   contactData.contacts[id].Address2 + ", " + contactData.contacts[id].County);
+		var name = $('.contact-name').html(contactData.contacts[id].FirstName + " " + contactData.contacts[id].LastName);
+		var detail = $('.contact-detail').html("<br>" + "First Name: " + contactData.contacts[id].FirstName + "<br>" + "Last Name: " + contactData.contacts[id].LastName +
+			  "<br>" + "Phone: " + " " + contactData.contacts[id].Phone + "<br>" + "Address: " + "<br>" + contactData.contacts[id].Address1 + " " +
+			   contactData.contacts[id].Address2 + " " + contactData.contacts[id].County);
+		$(name).css('font-size', '20px');
+		$(detail).css('font-size', '15px');
 	},
 	contactList: function() {
 		$('.clist').html("");
 		for (var i = 0; i < contactData.contacts.length; i++) {
 			$('.clist').append('<li id=' + i + '>' + contactData.contacts[i].FirstName + " " + contactData.contacts[i].LastName + '</li');
 		}
-	}
+	},
+	//fix this... ensure mandatory fields are filled//
+	/*validateForm: function() {
+		var x = (contactData.contact.FirstName).value;
+		if (x == null || x == "") {
+			console.log('enter name');
+			return false;
+		}
+	}*/
 }
 
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 
-//fix this... ensure mandatory fields are filled//
-$('.add').on('click', function() {
-	if (contactData.contacts.FirstName === "") {
-		alert("you must complete all fields")
-	}
-})
-
 //empty input fields//
 $('.add').on('click', function() {	
 	$('.first-name').val('');
 	$('.last-name').val('');
-	$('.phone').val('');
+	$('.phone1').val('');
+	$('.phone2').val('');
 	$('.add1').val('');
 	$('.add2').val('');
 	$('.county').val('');
 });
+
+//show additional phone field on button click and remove on form submit//
+$('.add-phone').on('click', function() {
+	$('.phone2').show();
+})
+$('.add').on('click', function() {
+	$('.phone2').hide();
+})
 
 });
 

@@ -28,12 +28,16 @@ body {
 	line-height: 5px;
 }
 
-.first-name, .last-name, .phone,
-.add1, .add2, .county {
+.first-name, .last-name, .phone1,
+.phone2, .add1, .add2, .county {
 	width: 45%;
 	height: 20px;
 	border: 1px solid black;
 	border-radius: 4px;
+}
+
+.phone2 {
+	display: none;
 }
 
 .add {
@@ -44,17 +48,36 @@ body {
 	border-radius: 5px;
 }
 
-.add:hover {
+.add-phone {
+	line-height: 20px;
+	margin-left: 0px;
+	font-size: 15px;
+	background-color: #32C1FF;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.add:hover, .add-phone:hover {
 	background-color: #3228FF;
 }
 
-.contact-record {
+.contact-name {
+	
+	margin-left: 10px;
+	margin-top: 30px;
+	margin-bottom: -20px;
+	text-transform: capitalize;
+}
+
+.contact-detail {
 	list-style-type: none;
 	text-transform: capitalize;
 }
 
 .contact-list {
 	margin: 10px;
+	margin-top: 30px;
+	font-size: 20px;
 }
 
 .clist {
