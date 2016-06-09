@@ -13,7 +13,7 @@ var contactData = {
 		County:$ ('.county').val()
 		};
 	contactData.contacts.push(newContact);
-	if contactData.validateForm() {
+	if (contactData.validateForm()) {
 		contactData.contactList();
 		}
 		
@@ -31,13 +31,6 @@ var contactData = {
 		$('.clist').html("");
 		for (var i = 0; i < contactData.contacts.length; i++) {
 			$('.clist').append('<li id=' + i + '>' + contactData.contacts[i].FirstName + " " + contactData.contacts[i].LastName + '</li');
-		//make first name and phone fields mandatory//
-		/*var fName = $('.first-name').val()
-		var phone = $('.phone').val()
-		if (fName == "" || fName == null) {
-			alert('Please enter a first name.');
-			return false;
-			}*/
 		}
 	},
 	updateRecord: function () {
@@ -51,6 +44,7 @@ var contactData = {
 		var updatedDetail = $('.contact-detail').html("Phone 2: " + " " + updatedContact.Phone2);
 		$(updatedDetail).css('font-size', '15px');
 	},
+	//need to add phone field to this - make first name and phone fields mandatory//
 	validateForm: function() {
 	var fName = $('.first-name').val();
 	if (fName == "" || fName == null) {
@@ -63,7 +57,6 @@ var contactData = {
 	}
 };
 
-/*$('.add').click(contactData.validateForm);*/
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 $('body').on('click', '.clist li', function() {
