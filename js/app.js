@@ -7,7 +7,7 @@ var contactData = {
 		var newContact = {
 		FirstName: $('.first-name').val(),
 		LastName: $('.last-name').val(),
-		Phone1: $('.phone1').val(),
+		Phone: $('.phone1').val(),
 		Address1: $('.add1').val(),
 		Address2: $('.add2').val(),
 		County:$ ('.county').val()
@@ -82,11 +82,16 @@ $('.go').on('click', function() {
 $('.add-phone').on('click', function() {
 	$('.phone2').show();
 	$('.go').show();
+	$('.add-phone').hide();
 });
 $('.go').on('click', function() {
 	$('.phone2').hide();
 	$('.go').hide();
-	$('.add-phone').hide();
+	$('.add-phone').show();
+});
+$('.clist').on('click', function() {
+	$('.phone2').hide();
+	$('.go').hide();
 });
 
 });

@@ -19,24 +19,24 @@
 		<p>Last Name</p>
 		<input class="last-name" id="last-name" type="text"></input>
 		<p>Phone Number*</p>
-		<input class="phone1" id="phone1" type="text" placeholder="Phone #1"></input>
-		<br></br>
-		<input class="phone2" id="phone2" type="text" placeholder="Phone #2"></input>
-		<br></br>
-		<button class="go">Go</button>
-		<br></br>
-		<button class="add-phone">Add Phone Number</button>
+		<input class="phone1" id="phone1" type="text"></input>
 		<p>Address 1</p>
 		<input class="add1" id="add1" type="text"></input>
 		<p>Address 2</p>
 		<input class="add2" id="add2" type="text"></input>
 		<p>County</p>
 		<input class="county" id="county" type="text"></input>
+		<br></br>
+		<div class="mandatory">(* = mandatory fields)</div>
+		<button class="add">Add Contact</button>
 	</section>
-	<button class="add">Add Contact</button>
-	<div class="mandatory">(* = mandatory fields)</div>
-	<div class="contact-name"></div>
+	<section>
+		<div class="contact-name"></div>
 		<ul class="contact-detail" id="contact-detail"></ul>
+		<input class="phone2" id="phone2" type="text" placeholder="Additional Phone"></input>
+		<button class="go">Go</button>
+		<button class="add-phone">Add Phone Number</button>
+	</section>
 	<div class="contact-list">Contacts:</div>
 		<ul class="clist"></ul>
 </body>
