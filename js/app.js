@@ -7,7 +7,7 @@ var contactData = {
 		var newContact = {
 		FirstName: $('.first-name').val(),
 		LastName: $('.last-name').val(),
-		Phone: $('.phone1').val(),
+		Phone: [$('.phone').val()],
 		Address1: $('.add1').val(),
 		Address2: $('.add2').val(),
 		County:$ ('.county').val()
@@ -16,13 +16,18 @@ var contactData = {
 	if (contactData.validateForm()) {
 		contactData.contactList();
 		}
-		
+	console.log(newContact)
+	},
+	//make this collect all phone numbers from Phone array and//
+	//made available for showContact//
+	getPhoneNumbers: function() {
+
 	},
 	showContact: function() {
 		var id = $(this).attr('id');
 		var name = $('.contact-name').html(contactData.contacts[id].FirstName + " " + contactData.contacts[id].LastName);
 		var detail = $('.contact-detail').html("<br>" + "First Name: " + contactData.contacts[id].FirstName + "<br>" + "Last Name: " + contactData.contacts[id].LastName +
-			  "<br>" + "Phone: " + " " + contactData.contacts[id].Phone1 + "<br>" + "Address: " + "<br>" + contactData.contacts[id].Address1 + " " +
+			  "<br>" + "Phone: " + " " + contactData.contacts[id].Phone + "<br>" + "Address: " + "<br>" + contactData.contacts[id].Address1 + " " +
 			   contactData.contacts[id].Address2 + " " + contactData.contacts[id].County);
 		$(name).css('font-size', '20px');
 		$(detail).css('font-size', '15px');
@@ -33,16 +38,11 @@ var contactData = {
 			$('.clist').append('<li id=' + i + '>' + contactData.contacts[i].FirstName + " " + contactData.contacts[i].LastName + '</li');
 		}
 	},
-	updateRecord: function () {
-		var updatedContact = {
-			Phone2: $('.phone2').val()
-		};
-	contactData.contacts.push(updatedContact);
-	console.log(updatedContact);
-	},
-	showUpdatedContact: function() {
-		var updatedDetail = $('.contact-detail').html("Phone 2: " + " " + updatedContact.Phone2);
-		$(updatedDetail).css('font-size', '15px');
+	//make this collect new numbers and push them to the Phone array//
+	addPhoneNumber: function() {
+		var newPhone = $('.phone').val()
+		contactRecord.Phone.push(newPhone);
+		console.log(newPhone);
 	},
 	//need to add phone field to this - make first name and phone fields mandatory//
 	validateForm: function() {
@@ -61,36 +61,31 @@ $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 $('body').on('click', '.clist li', function() {
 	$('.add-phone').show()
-	})
-$('.go').click(contactData.updateRecord);
-$('.go').on('click', '.clist li', contactData.showUpdatedContact);
+	});
 
 //empty input fields//
 $('.add').on('click', function() {	
 	$('.first-name').val('');
 	$('.last-name').val('');
-	$('.phone1').val('');
+	$('#phone1').val('');
 	$('.add1').val('');
 	$('.add2').val('');
 	$('.county').val('');
 });
-$('.go').on('click', function() {	
-	$('.phone2').val('');
-});
 
 //show additional phone field on button click and remove on form submit//
 $('.add-phone').on('click', function() {
-	$('.phone2').show();
+	$('#phone2').show();
 	$('.go').show();
 	$('.add-phone').hide();
 });
 $('.go').on('click', function() {
-	$('.phone2').hide();
+	$('#phone2').hide();
 	$('.go').hide();
 	$('.add-phone').show();
 });
 $('.clist').on('click', function() {
-	$('.phone2').hide();
+	$('#phone2').hide();
 	$('.go').hide();
 });
 
