@@ -45,6 +45,16 @@ var contactData = {
 			$('.clist').append('<li id=' + i + '>' + contactData.contacts[i].FirstName + " " + contactData.contacts[i].LastName + '</li');
 		}
 	},
+	//make this add the new phone number to the contact record using the id//
+	updateContact: function(id, phone2) {
+		$('body').on('click', '.clist li', function() {
+		var addNumberId = $('#phone2').attr('data-user', 1);
+		var newNumber = $('#phone2').val();
+		contactData.contacts.Phone.push(newNumber);
+		});
+		$('.go').click(contactData.updateContact(addNumberId, newNumber));
+		console.log(newNumber)
+	},
 	//need to add phone field to this - make first name and phone fields mandatory//
 	validateForm: function() {
 	var fName = $('.first-name').val();
@@ -57,13 +67,11 @@ var contactData = {
 		}
 	}
 };
-
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 $('body').on('click', '.clist li', function() {
 	$('.add-phone').show()
 	});
-
 //empty input fields//
 $('.add').on('click', function() {	
 	$('.first-name').val('');
