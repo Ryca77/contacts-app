@@ -28,8 +28,8 @@ body {
 	line-height: 5px;
 }
 
-.first-name, .last-name, .phone1,
-.phone2, .add1, .add2, .county {
+.first-name, .last-name,
+.phone, .add1, .add2, .county {
 	width: 45%;
 	height: 20px;
 	border: 1px solid black;
@@ -67,7 +67,7 @@ body {
 	text-transform: capitalize;
 }
 
-.phone2 {
+#phone2 {
 	margin-left: 10px;
 	margin-bottom: -50px;
 	display: none;

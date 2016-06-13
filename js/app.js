@@ -23,11 +23,12 @@ var contactData = {
 	getPhoneNumbers: function() {
 		var phone = [];
 		$.each($('.phone'), function(index, value) {
-			console.log(index);
+			if ($(value).val().length) {
 			phone.push($(value).val());
-			console.log(phone);
-			return phone;
+			}
 		});
+		console.log(phone);
+		return phone;
 	},
 	showContact: function() {
 		var id = $(this).attr('id');
