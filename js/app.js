@@ -16,12 +16,19 @@ var contactData = {
 	if (contactData.validateForm()) {
 		contactData.contactList();
 		}
-	console.log(newContact)
+		console.log(newContact);
+		contactData.getPhoneNumbers();
 	},
 	//make this collect all phone numbers from Phone array and//
-	//made available for showContact//
+	//make available for showContact//
 	getPhoneNumbers: function() {
-
+		$.each([$('.phone').val()], function(index, value) {
+			console.log(index + ': ' + value);
+		});
+		/*var phone = {
+			Phone: $('.phone').val()
+		contactData.contacts.push(phone);
+		console.log(phone);*/
 	},
 	showContact: function() {
 		var id = $(this).attr('id');
@@ -37,12 +44,6 @@ var contactData = {
 		for (var i = 0; i < contactData.contacts.length; i++) {
 			$('.clist').append('<li id=' + i + '>' + contactData.contacts[i].FirstName + " " + contactData.contacts[i].LastName + '</li');
 		}
-	},
-	//make this collect new numbers and push them to the Phone array//
-	addPhoneNumber: function() {
-		var newPhone = $('.phone').val()
-		contactRecord.Phone.push(newPhone);
-		console.log(newPhone);
 	},
 	//need to add phone field to this - make first name and phone fields mandatory//
 	validateForm: function() {
