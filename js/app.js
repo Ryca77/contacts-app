@@ -7,7 +7,7 @@ var contactData = {
 		var newContact = {
 		FirstName: $('.first-name').val(),
 		LastName: $('.last-name').val(),
-		Phone: [$('.phone').val()],
+		Phone: contactData.getPhoneNumbers(),
 		Address1: $('.add1').val(),
 		Address2: $('.add2').val(),
 		County:$ ('.county').val()
@@ -17,18 +17,17 @@ var contactData = {
 		contactData.contactList();
 		}
 		console.log(newContact);
-		contactData.getPhoneNumbers();
 	},
 	//make this collect all phone numbers from Phone array and//
 	//make available for showContact//
 	getPhoneNumbers: function() {
-		$.each([$('.phone').val()], function(index, value) {
-			console.log(index + ': ' + value);
+		var phone = [];
+		$.each($('.phone'), function(index, value) {
+			console.log(index);
+			phone.push($(value).val());
+			console.log(phone);
+			return phone;
 		});
-		/*var phone = {
-			Phone: $('.phone').val()
-		contactData.contacts.push(phone);
-		console.log(phone);*/
 	},
 	showContact: function() {
 		var id = $(this).attr('id');
