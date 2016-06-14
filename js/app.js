@@ -36,7 +36,6 @@ var contactData = {
 		var detail = $('.contact-detail').html("<br>" + "First Name: " + contactData.contacts[id].FirstName + "<br>" + "Last Name: " + contactData.contacts[id].LastName +
 			  "<br>" + "Phone: " + " " + contactData.contacts[id].Phone + "<br>" + "Address: " + "<br>" + contactData.contacts[id].Address1 + " " +
 			   contactData.contacts[id].Address2 + " " + contactData.contacts[id].County);
-		var addNumberId = $(this).attr('data-user', 1);
 		$(name).css('font-size', '20px');
 		$(detail).css('font-size', '15px');
 	},
@@ -49,9 +48,11 @@ var contactData = {
 	},
 	//make this add the new phone number to the contact record using the id//
 	updateContact: function(id, phone2) {
+		var addNumberId = $('#phone2').attr('data-user');
 		var newNumber = $('#phone2').val();
 		$('.go').click(console.log(newNumber))
-		contactData.contacts[addNumberId].Phone = newNumber;
+		contactData.contacts[addNumberId].push(Phone(newNumber))
+
 	},
 	//need to add phone field to this - make first name and phone fields mandatory//
 	validateForm: function() {
@@ -71,6 +72,8 @@ $('.go').click(contactData.updateContact);
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 $('body').on('click', '.clist li', function() {
+	$('#phone2').attr('data-user', 1);
+	console.log($('#phone2').attr('data-user'))
 	$('.add-phone').show();
 	});
 //empty input fields//
