@@ -34,7 +34,7 @@ var contactData = {
 		var id = $(this).attr('id');
 		var name = $('.contact-name').html(contactData.contacts[id].FirstName + " " + contactData.contacts[id].LastName);
 		var detail = $('.contact-detail').html("<br>" + "First Name: " + contactData.contacts[id].FirstName + "<br>" + "Last Name: " + contactData.contacts[id].LastName +
-			  "<br>" + "Phone: " + " " + contactData.contacts[id].Phone + "<br>" + "Address: " + "<br>" + contactData.contacts[id].Address1 + " " +
+			  "<br>" + "Phone 1: " + " " + contactData.contacts[id].Phone + "<br>" + "Address: " + "<br>" + contactData.contacts[id].Address1 + " " +
 			   contactData.contacts[id].Address2 + " " + contactData.contacts[id].County);
 		$(name).css('font-size', '20px');
 		$(detail).css('font-size', '15px');
@@ -49,10 +49,9 @@ var contactData = {
 	//make this add the new phone number to the contact record using the id//
 	updateContact: function(id, phone2) {
 		var addNumberId = $('#phone2').attr('data-user');
-		var newNumber = $('#phone2').val();
-		$('.go').click(console.log(newNumber))
-		contactData.contacts[addNumberId].push(Phone(newNumber))
-
+		var newNumber = ("Phone 2: " + $('#phone2').val());
+		$('.go').click(console.log(newNumber));
+		contactData.contacts[addNumberId].push(newNumber);
 	},
 	//need to add phone field to this - make first name and phone fields mandatory//
 	validateForm: function() {
