@@ -50,7 +50,7 @@ var contactData = {
 	updateContact: function(id) {
 		var addNewNumber = $('#phone2').attr('data-user');
 		var newNumber = $('#phone2').val();
-		contactData.contacts[0].Phone.push("<br>" + "Phone 2: " + newNumber);
+		contactData.contacts[addNewNumber].Phone.push("<br>" + "Phone 2: " + newNumber);
 		$('.go').click(console.log(newNumber));
 	},
 	//need to add phone field to this - make first name and phone fields mandatory//
@@ -70,7 +70,7 @@ $('.go').click(contactData.updateContact);
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 $('body').on('click', '.clist li', function() {
-	$(this).attr('data-user');
+	$('#phone2').attr('data-user', $(this).index());
 	console.log($('#phone2').attr('data-user'))
 	$('.add-phone').show();
 	});
