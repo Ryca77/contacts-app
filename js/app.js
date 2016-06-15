@@ -47,11 +47,11 @@ var contactData = {
 		}
 	},
 	//make this add the new phone number to the contact record using the id//
-	updateContact: function(id, phone2) {
-		var addNumberId = $('#phone2').attr('data-user');
-		var newNumber = ("Phone 2: " + $('#phone2').val());
+	updateContact: function(id) {
+		var addNewNumber = $(this).attr('data-user', 1);
+		var newNumber = $('#phone2').val();
+		contactData.contacts[1].Phone.push("<br>" + "Phone 2: " + newNumber);
 		$('.go').click(console.log(newNumber));
-		contactData.contacts[addNumberId].push(newNumber);
 	},
 	//need to add phone field to this - make first name and phone fields mandatory//
 	validateForm: function() {
@@ -67,11 +67,10 @@ var contactData = {
 };
 
 $('.go').click(contactData.updateContact);
-
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 $('body').on('click', '.clist li', function() {
-	$('#phone2').attr('data-user', 1);
+	contactData.updateContact;
 	console.log($('#phone2').attr('data-user'))
 	$('.add-phone').show();
 	});
@@ -95,6 +94,7 @@ $('.go').on('click', function() {
 	$('#phone2').hide();
 	$('.go').hide();
 	$('.add-phone').show();
+	$('#phone2').val('');
 });
 $('.clist').on('click', function() {
 	$('#phone2').hide();
