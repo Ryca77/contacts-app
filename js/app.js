@@ -8,8 +8,8 @@ var contactData = {
 		FirstName: $('.first-name').val(),
 		LastName: $('.last-name').val(),
 		Phone: contactData.getPhoneNumbers(),
-		Address1: $('.add1').val(),
-		Address2: $('.add2').val(),
+		Street: $('.add1').val(),
+		City: $('.add2').val(),
 		County:$ ('.county').val()
 		};
 	contactData.contacts.push(newContact);
@@ -34,8 +34,8 @@ var contactData = {
 		var id = $(this).attr('id');
 		var name = $('.contact-name').html(contactData.contacts[id].FirstName + " " + contactData.contacts[id].LastName);
 		var detail = $('.contact-detail').html("<br>" + "First Name: " + contactData.contacts[id].FirstName + "<br>" + "Last Name: " + contactData.contacts[id].LastName +
-			  "<br>" + "Phone 1: " + " " + contactData.contacts[id].Phone + "<br>" + "Address: " + "<br>" + contactData.contacts[id].Address1 + " " +
-			   contactData.contacts[id].Address2 + " " + contactData.contacts[id].County);
+			  "<br>" + "Phone 1: " + " " + contactData.contacts[id].Phone.join("") + "<br>" + "Address: " + "<br>" + contactData.contacts[id].Street + "<br>" +
+			   contactData.contacts[id].City + "<br> " + contactData.contacts[id].County);
 		$(name).css('font-size', '20px');
 		$(detail).css('font-size', '15px');
 	},
@@ -46,18 +46,18 @@ var contactData = {
 			$('.clist').append('<li id=' + i + '>' + contactData.contacts[i].FirstName + " " + contactData.contacts[i].LastName + '</li');
 		}
 	},
-	//make this add the new phone number to the contact record using the id//
+	//add new phone number to the contact record with data-user attributed on line 74//
 	updateContact: function(id) {
 		var addNewNumber = $('#phone2').attr('data-user');
 		var newNumber = $('#phone2').val();
-		contactData.contacts[addNewNumber].Phone.push("<br>" + "Phone 2: " + newNumber);
+		contactData.contacts[addNewNumber].Phone.push("<br>" + "Phone " + (contactData.contacts[addNewNumber].Phone.length+1) + ": " + newNumber);
 		$('.go').click(console.log(newNumber));
 	},
-	//need to add phone field to this - make first name and phone fields mandatory//
+	//make first name and phone fields mandatory//
 	validateForm: function() {
-	var fName = $('.first-name').val();
-	if (fName == "" || fName == null) {
-		alert('Please enter a first name.');
+	var mandatory = ($('.first-name').val() && $('#phone1').val());
+	if (mandatory == "" || mandatory == null) {
+		alert('Please enter a first name and contact number.');
 		return false;
 		}
 	else {
@@ -66,6 +66,7 @@ var contactData = {
 	}
 };
 
+//calling functions and creating data-user id for adding phone number//
 $('.go').click(contactData.updateContact);
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);

@@ -1,6 +1,6 @@
 body {
 	position: relative;
-	max-width: 800px;
+	max-width: 400px;
 	height: 100%;
 	width: 100%;
 	margin: 0 auto;
@@ -30,7 +30,7 @@ body {
 
 .first-name, .last-name,
 .phone, .add1, .add2, .county {
-	width: 45%;
+	width: 80%;
 	height: 20px;
 	border: 1px solid black;
 	border-radius: 4px;
