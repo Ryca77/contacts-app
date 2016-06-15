@@ -70,7 +70,7 @@ $('.go').click(contactData.updateContact);
 $('.add').click(contactData.contactRecord);
 $('body').on('click', '.clist li', contactData.showContact);
 $('body').on('click', '.clist li', function() {
-	contactData.updateContact;
+	$('#phone2').attr('data-user');
 	console.log($('#phone2').attr('data-user'))
 	$('.add-phone').show();
 	});
