@@ -12,8 +12,8 @@ var contactData = {
 		City: $('.add2').val(),
 		County:$ ('.county').val()
 		};
-	contactData.contacts.push(newContact);
 	if (contactData.validateForm()) {
+		contactData.contacts.push(newContact);
 		contactData.contactList();
 		}
 		console.log(newContact);
